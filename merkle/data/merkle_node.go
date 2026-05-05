@@ -1,11 +1,6 @@
 package data
 
-// Normal node
-type NormalNode struct {
-    Data  string
-    Left  *NormalNode   // just an address
-    Right *NormalNode
-}
+
 
 // Merkle node (hash pointer)
 //root hash is sum of the children hashes
