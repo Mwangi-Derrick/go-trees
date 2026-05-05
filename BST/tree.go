@@ -4,7 +4,8 @@ import ("fmt"
 		"go-trees/BST/data"
 		"go-trees/BST/traversal"
 	"go-trees/BST/insert"
-	"go-trees/BST/search")
+	"go-trees/BST/search"
+	"go-trees/BST/count")
 
 
 func main() {
@@ -35,4 +36,6 @@ func main() {
         found := search.Search(root, v)
         fmt.Printf("Search for %d: %v\n", v, found)
     }
+
+	fmt.Println("Total nodes:", count.CountNodes(root))  // Should print 7
 }
