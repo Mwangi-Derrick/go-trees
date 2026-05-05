@@ -1,11 +1,12 @@
-package main
+package traversal;
 
-import "fmt"
+import ( "fmt" 
+"go-trees/BST/data")
 
 
 
 // PrintTree walks the tree and prints every node
-func PrintTree(node *Node, level int) {
+func PrintTree(node *data.Node, level int) {
 	// Base case: if node is nil, return
     if node == nil {
         return
