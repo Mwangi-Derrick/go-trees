@@ -23,6 +23,7 @@ type Proof struct {
 }
 
 func NewLeaf(data []byte, index int) *MerkleNode {
+	//a leaf is a node that has a hash
     hash := sha256.Sum256(data)
     return &MerkleNode{
         Hash:  hash[:],
@@ -33,6 +34,7 @@ func NewLeaf(data []byte, index int) *MerkleNode {
 
 func NewInternal(left, right *MerkleNode) *MerkleNode {
     combined := append(left.Hash, right.Hash...)
+	//hash combined left and right hash
     hash := sha256.Sum256(combined)
     
     node := &MerkleNode{
