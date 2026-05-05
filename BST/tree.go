@@ -15,6 +15,8 @@ func main() {
     values := []int{10, 5, 15, 3, 7, 12, 20}
 	// values := []int{20, 15, 10, 7, 5, 3}
 	// for some reason 20, 15, 10, 7, 5, 3 is not working as expected, it is creating a left skewed tree instead of a balanced tree. This is because the insert function is designed to maintain the binary search tree property, which means that all values less than the root go to the left and all values greater than the root go to the right. When you insert values in descending order, each new value is less than the previous one, so it always goes to the left, resulting in a left skewed tree.
+	// values := []int{3, 5, 7, 10, 12, 15, 20} // This will create a right skewed tree for the same reason as above but in reverse order.
+	//NOTE: skewed trees are O(n) while balanced trees are O(log n) this means they have more operation count than balanced trees
     for _, v := range values {
         root = insert.Insert(root, v)
     }
