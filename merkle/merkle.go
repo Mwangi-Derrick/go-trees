@@ -45,11 +45,33 @@ func BuildTree(blocks [][]byte) *data.MerkleNode {
     
     for len(nodes) > 1 {
         var nextLevel []*data.MerkleNode
-        
+        //this loop performs a pair reduction
         for i := 0; i < len(nodes); i += 2 {
             if i+1 < len(nodes) {
+				//if we arent at the end
+
+				//Level 0: [A, B, C, D, E]  (5 nodes)
+
+				// Pass 1:
+				// - i=0: combine A+B → Parent1
+				// - i=2: combine C+D → Parent2  
+				// - i=4: E is odd one out → promote E
+
+				// Result: [Parent1, Parent2, E]
+
+				// Pass 2:
+				// - i=0: combine Parent1+Parent2 → Grandparent
+				// - i=2: E is odd → promote E
+
+				// Result: [Grandparent, E]
+
+				// Pass 3:
+				// - i=0: combine Grandparent+E → Root
+
+				// Result: [Root]
                 nextLevel = append(nextLevel, NewInternal(nodes[i], nodes[i+1]))
             } else {
+				//if we reach end
                 nextLevel = append(nextLevel, nodes[i])
             }
         }
@@ -80,7 +102,9 @@ func PrintTree(node *data.MerkleNode, level int) {
 }
 
 func main() {
+	//an array of bytes
     blocks := [][]byte{
+		//convert to bytes
         []byte("Hello"),
         []byte("World"),
         []byte("Merkle"),
