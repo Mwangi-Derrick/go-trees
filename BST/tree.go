@@ -2,18 +2,20 @@ package main
 
 import ("fmt"
 		"go-trees/BST/data"
-		"go-trees/BST/traversal")
+		"go-trees/BST/traversal"
+	"go-trees/BST/insert")
 
 
 func main() {
-    // Build a tiny tree manually
-    root := &data.Node{Value: 10}
-    root.Left = &data.Node{Value: 5}
-    root.Right = &data.Node{Value: 15}
+	var root *data.Node // Start with an empty tree
 
-	// Add a deeper data
-    root.Left.Left = &data.Node{Value: 3}
-    root.Left.Right = &data.Node{Value: 7}
+	  // Insert some numbers
+    values := []int{10, 5, 15, 3, 7, 12, 20}
+    for _, v := range values {
+        root = insert.Insert(root, v)
+    }
+    
+    fmt.Println("Tree after inserts:")
 
     // Print the tree
 
