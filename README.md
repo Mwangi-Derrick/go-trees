@@ -56,3 +56,10 @@ This repository is designed to evolve as a playground for more advanced structur
 ---
 
 *Built as a foundational study in Go Systems Engineering.*
+
+## Running the Demos
+
+Each top-level folder is a small, self-contained learning demo (most are `package main`).
+
+- Merkle DAG (Git-style CAS): `go run ./merkle-DAG/git-dag.go`
+- LSM Tree: `go run ./LSM/lsm.go`
